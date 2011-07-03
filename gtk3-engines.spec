@@ -15,7 +15,6 @@ BuildRequires:	gtk+3-devel
 BuildRequires:	intltool >= 0.40.0
 BuildRequires:	libtool
 BuildRequires:	pkgconfig
-BuildRequires:	sed >= 4.0
 Requires(post):	gtk+3
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -49,9 +48,6 @@ Różne motywy do biblioteki GTK+.
 %prep
 %setup -q -n gtk-engines-%{version}
 
-sed -i -e 's/^en@shaw//' po/LINGUAS
-rm -f po/en@shaw.po
-
 %build
 %{__libtoolize}
 %{__aclocal}
@@ -68,8 +64,8 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
-# .la are not needed (according to spec included to package)
-rm -f $RPM_BUILD_ROOT%{_libdir}/gtk-3.0/*/engines/*.la
+# no .la for loadable GTK+ modules
+%{__rm} $RPM_BUILD_ROOT%{_libdir}/gtk-3.0/*/engines/*.la
 
 %find_lang gtk3-engines
 
