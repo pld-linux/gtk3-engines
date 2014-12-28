@@ -10,7 +10,7 @@ Source0:	http://ftp.gnome.org/pub/GNOME/sources/gtk-engines/2.91/gtk-engines-%{v
 URL:		http://gtk.themes.org/
 BuildRequires:	autoconf
 BuildRequires:	automake
-BuildRequires:	gettext-devel
+BuildRequires:	gettext-tools
 BuildRequires:	gtk+3-devel
 BuildRequires:	intltool >= 0.40.0
 BuildRequires:	libtool
